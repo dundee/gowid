@@ -27,35 +27,20 @@ func (e EventNotSupported) Error() string {
 }
 
 func pasteStart(ti *terminfo.Terminfo) []byte {
-	if ti.PasteStart != "" {
-		return []byte(ti.PasteStart)
-	} else {
-		return []byte("\x1b[200~")
-	}
+	return []byte("\x1b[200~")
 }
 
 func pasteEnd(ti *terminfo.Terminfo) []byte {
-	if ti.PasteEnd != "" {
-		return []byte(ti.PasteEnd)
-	} else {
-		return []byte("\x1b[201~")
-	}
+	return []byte("\x1b[201~")
 }
 
 func enablePaste(ti *terminfo.Terminfo) []byte {
-	if ti.EnablePaste != "" {
-		return []byte(ti.EnablePaste)
-	} else {
-		return []byte("\x1b[?2004h")
-	}
+	return []byte("\x1b[?2004h")
+
 }
 
 func disablePaste(ti *terminfo.Terminfo) []byte {
-	if ti.DisablePaste != "" {
-		return []byte(ti.DisablePaste)
-	} else {
-		return []byte("\x1b[?2004l")
-	}
+	return []byte("\x1b[?2004l")
 }
 
 // TCellEventToBytes converts TCell's representation of a terminal event to
@@ -95,170 +80,19 @@ func TCellEventToBytes(ev interface{}, mouse IMouseSupport, last gowid.MouseStat
 			case tcell.KeyCR:
 				str := []rune{rune(tcell.KeyCR)}
 				res = append(res, string(str)...)
-			case tcell.KeyF1:
-				res = append(res, ti.KeyF1...)
-			case tcell.KeyF2:
-				res = append(res, ti.KeyF2...)
-			case tcell.KeyF3:
-				res = append(res, ti.KeyF3...)
-			case tcell.KeyF4:
-				res = append(res, ti.KeyF4...)
-			case tcell.KeyF5:
-				res = append(res, ti.KeyF5...)
-			case tcell.KeyF6:
-				res = append(res, ti.KeyF6...)
-			case tcell.KeyF7:
-				res = append(res, ti.KeyF7...)
-			case tcell.KeyF8:
-				res = append(res, ti.KeyF8...)
-			case tcell.KeyF9:
-				res = append(res, ti.KeyF9...)
-			case tcell.KeyF10:
-				res = append(res, ti.KeyF10...)
-			case tcell.KeyF11:
-				res = append(res, ti.KeyF11...)
-			case tcell.KeyF12:
-				res = append(res, ti.KeyF12...)
-			case tcell.KeyF13:
-				res = append(res, ti.KeyF13...)
-			case tcell.KeyF14:
-				res = append(res, ti.KeyF14...)
-			case tcell.KeyF15:
-				res = append(res, ti.KeyF15...)
-			case tcell.KeyF16:
-				res = append(res, ti.KeyF16...)
-			case tcell.KeyF17:
-				res = append(res, ti.KeyF17...)
-			case tcell.KeyF18:
-				res = append(res, ti.KeyF18...)
-			case tcell.KeyF19:
-				res = append(res, ti.KeyF19...)
-			case tcell.KeyF20:
-				res = append(res, ti.KeyF20...)
-			case tcell.KeyF21:
-				res = append(res, ti.KeyF21...)
-			case tcell.KeyF22:
-				res = append(res, ti.KeyF22...)
-			case tcell.KeyF23:
-				res = append(res, ti.KeyF23...)
-			case tcell.KeyF24:
-				res = append(res, ti.KeyF24...)
-			case tcell.KeyF25:
-				res = append(res, ti.KeyF25...)
-			case tcell.KeyF26:
-				res = append(res, ti.KeyF26...)
-			case tcell.KeyF27:
-				res = append(res, ti.KeyF27...)
-			case tcell.KeyF28:
-				res = append(res, ti.KeyF28...)
-			case tcell.KeyF29:
-				res = append(res, ti.KeyF29...)
-			case tcell.KeyF30:
-				res = append(res, ti.KeyF30...)
-			case tcell.KeyF31:
-				res = append(res, ti.KeyF31...)
-			case tcell.KeyF32:
-				res = append(res, ti.KeyF32...)
-			case tcell.KeyF33:
-				res = append(res, ti.KeyF33...)
-			case tcell.KeyF34:
-				res = append(res, ti.KeyF34...)
-			case tcell.KeyF35:
-				res = append(res, ti.KeyF35...)
-			case tcell.KeyF36:
-				res = append(res, ti.KeyF36...)
-			case tcell.KeyF37:
-				res = append(res, ti.KeyF37...)
-			case tcell.KeyF38:
-				res = append(res, ti.KeyF38...)
-			case tcell.KeyF39:
-				res = append(res, ti.KeyF39...)
-			case tcell.KeyF40:
-				res = append(res, ti.KeyF40...)
-			case tcell.KeyF41:
-				res = append(res, ti.KeyF41...)
-			case tcell.KeyF42:
-				res = append(res, ti.KeyF42...)
-			case tcell.KeyF43:
-				res = append(res, ti.KeyF43...)
-			case tcell.KeyF44:
-				res = append(res, ti.KeyF44...)
-			case tcell.KeyF45:
-				res = append(res, ti.KeyF45...)
-			case tcell.KeyF46:
-				res = append(res, ti.KeyF46...)
-			case tcell.KeyF47:
-				res = append(res, ti.KeyF47...)
-			case tcell.KeyF48:
-				res = append(res, ti.KeyF48...)
-			case tcell.KeyF49:
-				res = append(res, ti.KeyF49...)
-			case tcell.KeyF50:
-				res = append(res, ti.KeyF50...)
-			case tcell.KeyF51:
-				res = append(res, ti.KeyF51...)
-			case tcell.KeyF52:
-				res = append(res, ti.KeyF52...)
-			case tcell.KeyF53:
-				res = append(res, ti.KeyF53...)
-			case tcell.KeyF54:
-				res = append(res, ti.KeyF54...)
-			case tcell.KeyF55:
-				res = append(res, ti.KeyF55...)
-			case tcell.KeyF56:
-				res = append(res, ti.KeyF56...)
-			case tcell.KeyF57:
-				res = append(res, ti.KeyF57...)
-			case tcell.KeyF58:
-				res = append(res, ti.KeyF58...)
-			case tcell.KeyF59:
-				res = append(res, ti.KeyF59...)
-			case tcell.KeyF60:
-				res = append(res, ti.KeyF60...)
-			case tcell.KeyF61:
-				res = append(res, ti.KeyF61...)
-			case tcell.KeyF62:
-				res = append(res, ti.KeyF62...)
-			case tcell.KeyF63:
-				res = append(res, ti.KeyF63...)
-			case tcell.KeyF64:
-				res = append(res, ti.KeyF64...)
-			case tcell.KeyInsert:
-				res = append(res, ti.KeyInsert...)
-			case tcell.KeyDelete:
-				res = append(res, ti.KeyDelete...)
-			case tcell.KeyHome:
-				res = append(res, ti.KeyHome...)
-			case tcell.KeyEnd:
-				res = append(res, ti.KeyEnd...)
-			case tcell.KeyHelp:
-				res = append(res, ti.KeyHelp...)
-			case tcell.KeyPgUp:
-				res = append(res, ti.KeyPgUp...)
-			case tcell.KeyPgDn:
-				res = append(res, ti.KeyPgDn...)
-			case tcell.KeyUp:
-				res = append(res, ti.KeyUp...)
-			case tcell.KeyDown:
-				res = append(res, ti.KeyDown...)
-			case tcell.KeyLeft:
-				res = append(res, ti.KeyLeft...)
-			case tcell.KeyRight:
-				res = append(res, ti.KeyRight...)
-			case tcell.KeyBacktab:
-				res = append(res, ti.KeyBacktab...)
-			case tcell.KeyExit:
-				res = append(res, ti.KeyExit...)
-			case tcell.KeyClear:
-				res = append(res, ti.KeyClear...)
-			case tcell.KeyPrint:
-				res = append(res, ti.KeyPrint...)
-			case tcell.KeyCancel:
-				res = append(res, ti.KeyCancel...)
-			case tcell.KeyDEL:
-				res = append(res, ti.KeyBackspace...)
-			case tcell.KeyBackspace:
-				res = append(res, ti.KeyBackspace...)
+			case tcell.KeyF1, tcell.KeyF2, tcell.KeyF3, tcell.KeyF4, tcell.KeyF5, tcell.KeyF6, tcell.KeyF7, tcell.KeyF8, tcell.KeyF9,
+				tcell.KeyF10, tcell.KeyF11, tcell.KeyF12, tcell.KeyF13, tcell.KeyF14, tcell.KeyF15, tcell.KeyF16, tcell.KeyF17,
+				tcell.KeyF18, tcell.KeyF19, tcell.KeyF20, tcell.KeyF21, tcell.KeyF22, tcell.KeyF23, tcell.KeyF24, tcell.KeyF25,
+				tcell.KeyF26, tcell.KeyF27, tcell.KeyF28, tcell.KeyF29, tcell.KeyF30, tcell.KeyF31, tcell.KeyF32, tcell.KeyF33,
+				tcell.KeyF34, tcell.KeyF35, tcell.KeyF36, tcell.KeyF37, tcell.KeyF38, tcell.KeyF39, tcell.KeyF40, tcell.KeyF41,
+				tcell.KeyF42, tcell.KeyF43, tcell.KeyF44, tcell.KeyF45, tcell.KeyF46, tcell.KeyF47, tcell.KeyF48, tcell.KeyF49,
+				tcell.KeyF50, tcell.KeyF51, tcell.KeyF52, tcell.KeyF53, tcell.KeyF54, tcell.KeyF55, tcell.KeyF56, tcell.KeyF57,
+				tcell.KeyF58, tcell.KeyF59, tcell.KeyF60, tcell.KeyF61, tcell.KeyF62, tcell.KeyF63, tcell.KeyF64,
+				tcell.KeyInsert, tcell.KeyDelete, tcell.KeyHome, tcell.KeyEnd, tcell.KeyHelp, tcell.KeyPgUp, tcell.KeyPgDn,
+				tcell.KeyUp, tcell.KeyDown, tcell.KeyLeft, tcell.KeyRight, tcell.KeyBacktab, tcell.KeyExit, tcell.KeyClear,
+				tcell.KeyPrint, tcell.KeyCancel, tcell.KeyDEL, tcell.KeyBackspace:
+				str := []rune{ev.Rune()}
+				res = append(res, string(str)...)
 			default:
 				res2 = false
 				panic(EventNotSupported{Event: ev})
